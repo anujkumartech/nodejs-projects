@@ -1,0 +1,12 @@
+{
+    "name": "nodejs-course-projects",
+    "version": "1.0.0",
+    "description": "Node.js projects for classroom teaching",
+    "private": true,
+    "workspaces": [
+      "node-*/"
+    ],
+    "scripts": {
+      "test": "npm run test --workspaces"
+    }
+  }
