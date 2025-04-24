@@ -13,6 +13,16 @@ const productSchema = new mongoose.Schema({
   price: {
     type: Number,
     required: true
+  },
+  description: {
+    type: String,
+    required: [true, "Please pass description of the product as it is needed."]
+  },
+  brandname: {
+    type: String
+  },
+  discount: {
+    type: Number
   }
 }, {
   timestamps: true

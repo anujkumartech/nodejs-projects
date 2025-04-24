@@ -1,12 +1,15 @@
 const express = require('express');
 const router = express.Router();
+const validateRequestBody = require('../middleware/productMiddleware');
 
 const {
   getAllProducts,
   getProductById,
   createProduct,
   updateProduct,
-  deleteProduct
+  deleteProduct,
+  createProduct2,
+  getProductSortedByDiscount
 } = require('../controllers/productController');
 
 // GET all products
@@ -15,11 +18,14 @@ router.get('/', getAllProducts);
 // GET single product by ID
 router.get('/:id', getProductById);
 
+// GET single product by ID
+router.get('/sort/discount', getProductSortedByDiscount);
+
 // POST create new product
-router.post('/', createProduct);
+router.post('/', validateRequestBody, createProduct);
 
 // PUT update product
-router.put('/:id', updateProduct);
+router.put('/:id', validateRequestBody, updateProduct);
 
 // DELETE product
 router.delete('/:id', deleteProduct);

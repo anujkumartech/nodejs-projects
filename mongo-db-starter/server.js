@@ -4,6 +4,7 @@ const logger = require('./middleware/logger');
 const productRoutes = require('./routes/products');
 const cartRoutes = require('./routes/cart');
 const connectDB = require('./config/db');
+const connectDB2 = require('./config/db2');
 require('dotenv').config();
 
 const app = express();
@@ -34,9 +35,16 @@ const PORT = process.env.PORT || 5005;
 connectDB() // Call the function to establish connection
   .then(() => {
     console.log('Database connection established');
-    app.listen(PORT, () => {
-      console.log(`API Server running on port ${PORT}`);
-    });
+    connectDB2() // Call the function to establish connection
+      .then(() => {
+        console.log('Database2 connection established');
+        app.listen(PORT, () => {
+          console.log(`API Server running on port ${PORT}`);
+        });
+      })
+      .catch(err => {
+        console.error('Failed to connect to database:', err);
+      });
   })
   .catch(err => {
     console.error('Failed to connect to database:', err);
