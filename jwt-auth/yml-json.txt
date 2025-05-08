@@ -1,0 +1,16 @@
+# This is YAML
+person:
+  name: John
+  age: 30
+  hobbies:
+    - coding
+    - gaming
+
+# JSON
+{
+  "person": {
+    "name": "John",
+    "age": 30,
+    "hobbies": ["coding", "gaming"]
+  }
+}
