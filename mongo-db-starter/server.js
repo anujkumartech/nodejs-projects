@@ -5,6 +5,7 @@ const productRoutes = require('./routes/products');
 const cartRoutes = require('./routes/cart');
 const connectDB = require('./config/db');
 const connectDB2 = require('./config/db2');
+const cors = require('cors');
 require('dotenv').config();
 
 const app = express();
@@ -12,6 +13,7 @@ const app = express();
 app.use(logger);
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
+app.use(cors());
 
 app.use('/api/products', productRoutes);
 app.use('/api/cart', cartRoutes);
